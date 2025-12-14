@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Carta, NuevaCarta } from './types/index';
 import { cartasEjemplo } from './componentes/CartasIniciales';
+import Header from './componentes/Header';
 
 function App() {
   const [cartas, setCartas] = useState<Carta[]>(cartasEjemplo);
@@ -26,8 +27,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950">
-      {/* El Header vendrá aquí - Paso 3 */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800">
+      <Header busqueda={busqueda} setBusqueda={setBusqueda} />
+      {cartasFiltradas.length === 0 && (
+      <p className="text-red-400">No se encontraron luchadores...</p>
+)}
       
       <main className="container mx-auto px-4 py-8">
         {/* La ListaCartas vendrá aquí - Paso 4 */}
