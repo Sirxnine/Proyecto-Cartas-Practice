@@ -10,7 +10,7 @@ function Header({ busqueda, setBusqueda }: HeaderProps) {
           <div className="flex items-center gap-3">
             <div className="text-3xl animate-pulse">🥋</div>
             <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 bg-clip-text text-transparent">
-              THE GOD OF HIGH SCHOOL
+              JUEGO DE CARTAS
             </h1>
           </div>
           
