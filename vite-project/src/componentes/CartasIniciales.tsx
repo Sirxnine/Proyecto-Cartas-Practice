@@ -107,7 +107,7 @@ export const cartasNaruto: Carta[] = [
     habilidadUltimate: "Meteoritos del Cielo - Invoca meteoritos gigantes desde la atmósfera",
     anime: "Naruto Shippuden"
   }
-]
+];
 export const cartasSoloLeveling:Carta[] = [
   {
     id: 201,
@@ -121,10 +121,164 @@ export const cartasSoloLeveling:Carta[] = [
     habilidadPasiva: "Sistema de Monarca - Puede aumentar de forma constante sus atributos",
     habilidadUltimate: "Sombras - Manifiesta un ejercito de mas de 1000 soldados sombra",
     anime: "Solo Leveling"
+  },
+  {
+    id: 202,
+    nombre: "Cha Hae-In",
+    imagen: "https://i.pinimg.com/736x/b1/5b/31/b15b3190c784aaff3b8241d6e727640f.jpg",
+    descripcion: "La cazadora de nivel S más fuerte de Corea y única persona que puede detectar el olor único de Jin-Woo. Desarrolla sentimientos por él a lo largo de la serie.",
+    tipo: "Espadachín",
+    rareza: "S",
+    poder: 8700,
+    defensa: 8200,
+    habilidadPasiva: "Percepción Sensorial Mejorada - Detecta presencias ocultas y debilidades enemigas",
+    habilidadUltimate: "Corte Relámpago - Ataque de espada a velocidad supersónica",
+    anime: "Solo Leveling"
+  },
+  {
+    id: 203,
+    nombre: "Thomas Andre",
+    imagen: "https://i.pinimg.com/564x/89/ae/18/89ae18254ec98807b319d1d83b649361.jpg",
+    descripcion: "Líder del gremio Scavenger y uno de los monarcas. Poseedor del poder de la bestia, conocido por su fuerza bruta y resistencia sobrehumana.",
+    tipo: "Tanque",
+    rareza: "S",
+    poder: 8900,
+    defensa: 9500,
+    habilidadPasiva: "Piel de Hierro - Reduce el daño recibido en un 40%",
+    habilidadUltimate: "Transformación Berserker - Triplica su fuerza y defensa por 2 turnos",
+    anime: "Solo Leveling"
+  },
+  {
+    id: 204,
+    nombre: "Igris",
+    imagen: "https://static.wikia.nocookie.net/solo-leveling/images/d/d7/Igris22.jpeg/",
+    descripcion: "Caballero sombra de alto rango y primer soldado sombra reclutado por Jin-Woo. Sirve como su mano derecha y comandante del ejército sombra.",
+    tipo: "Caballero",
+    rareza: "A",
+    poder: 8200,
+    defensa: 8500,
+    habilidadPasiva: "Lealtad Inquebrantable - Protege automáticamente al aliado con menos HP",
+    habilidadUltimate: "Asalto de la Guardia Real - Lidera a todos los soldados sombra en un ataque coordinado",
+    anime: "Solo Leveling"
   }
-]
+];
+export const cartasJujutsuKaisen: Carta[] = [
+  {
+    id: 301,
+    nombre: "Satoru Gojo",
+    imagen: "https://preview.redd.it/art-made-some-gojo-satoru-fanart-t-shirt-design-by-me-v0-kay7b26dfisc1.png?auto=webp&s=1ba00178c2b2c37016ed827bdae0d7e12f993d6d",
+    descripcion: "El hechicero jujutsu más fuerte de la actualidad. Poseedor del Six Eyes y la técnica de límite infinito. Profesor en la Escuela Técnica de Magia de Tokio.",
+    tipo: "Hechicero",
+    rareza: "SS",
+    poder: 9900,
+    defensa: 8500,
+    habilidadPasiva: "Seis Ojos - Ve el flujo de energía maldita y copia técnicas",
+    habilidadUltimate: "Vacío Infinito - Atrapa objetivos en un bucle infinito de información",
+    anime: "Jujutsu Kaisen"
+  },
+  {
+    id: 302,
+    nombre: "Yuji Itadori",
+    imagen: "https://i.pinimg.com/736x/3e/44/c5/3e44c577a1e7b16231823c59cf68a9b8.jpg",
+    descripcion: "Estudiante de secundaria que se convierte en recipiente de Sukuna después de ingerir uno de sus dedos. Posee una fuerza física sobrehumana.",
+    tipo: "Luchador",
+    rareza: "S",
+    poder: 8800,
+    defensa: 8600,
+    habilidadPasiva: "Recipiente Perfecto - Resiste la posesión de Sukuna",
+    habilidadUltimate: "Impacto Divergente - Golpe concentrado que altera la realidad local",
+    anime: "Jujutsu Kaisen"
+  },
+  {
+    id: 303,
+    nombre: "Megumi Fushiguro",
+    imagen: "https://m.media-amazon.com/images/I/51TOA6LrR4L._AC_UF894,1000_QL80_.jpg",
+    descripcion: "Estudiante de hechicería y usuario de la técnica de sombras de los 10 espíritus. Puede invocar shikigamis mediante sombras.",
+    tipo: "Invocador",
+    rareza: "A",
+    poder: 8300,
+    defensa: 8100,
+    habilidadPasiva: "Dominio de Sombras - Puede teletransportarse entre sombras",
+    habilidadUltimate: "Mahoraga Incompleto - Invoca al shikigami más poderoso brevemente",
+    anime: "Jujutsu Kaisen"
+  },
+  {
+    id: 304,
+    nombre: "Ryomen Sukuna",
+    imagen: "https://i.pinimg.com/736x/65/da/fb/65dafb49fed4ff91da4f32dfa8a6db7c.jpg",
+    descripcion: "El Rey de las Maldiciones, considerado el hechicero más poderoso de la historia. Actualmente reside en Yuji Itadori como 20 dedos.",
+    tipo: "Maldición",
+    rareza: "SS",
+    poder: 10000,
+    defensa: 9000,
+    habilidadPasiva: "Dominio Malevolente - Su presencia debilita a los enemigos",
+    habilidadUltimate: "Doma - Corte espacial que divide cualquier cosa en su alcance",
+    anime: "Jujutsu Kaisen"
+  }
+];
+export const cartasDragonBallSuper: Carta[] = [
+  {
+    id: 401,
+    nombre: "Goku Ultra Instinto",
+    imagen: "https://i.pinimg.com/736x/52/12/cd/5212cd4f0422555c1d32d748235eb9d3.jpg",
+    descripcion: "La forma definitiva de Goku que separa la conciencia del movimiento corporal. Estado divino alcanzado durante el Torneo del Poder.",
+    tipo: "Saiyajin",
+    rareza: "SS",
+    poder: 9900,
+    defensa: 9500,
+    habilidadPasiva: "Instinto Perfecto - Esquiva automáticamente ataques",
+    habilidadUltimate: "Kamehameha de Instinto Ultra - Ataque de energía con precisión absoluta",
+    anime: "Dragon Ball Super"
+  },
+  {
+    id: 402,
+    nombre: "Vegeta Ultra Ego",
+    imagen: "https://i.pinimg.com/736x/64/0e/a8/640ea876b7041e6f90fcabaee3eae126.jpg",
+    descripcion: "Forma divina de Vegeta que potencia su poder cuanto más daño recibe. Representa el camino de la destrucción.",
+    tipo: "Saiyajin",
+    rareza: "SS",
+    poder: 9800,
+    defensa: 9200,
+    habilidadPasiva: "Ego Creciente - Aumenta poder un 10% por cada golpe recibido",
+    habilidadUltimate: "Final Flash Galáctico - Concentración máxima de energía de destrucción",
+    anime: "Dragon Ball Super"
+  },
+  {
+    id: 403,
+    nombre: "Bills",
+    imagen: "https://i.pinimg.com/736x/82/ba/55/82ba5519ac86931e40fc93b8caf1233a.jpg",
+    descripcion: "Dios de la Destrucción del Universo 7. Ser increíblemente poderoso que busca constantemente nuevos desafíos y buena comida.",
+    tipo: "Dios",
+    rareza: "SS",
+    poder: 9700,
+    defensa: 9700,
+    habilidadPasiva: "Hakai - Puede borrar la existencia de cualquier cosa",
+    habilidadUltimate: "Esfera de la Destrucción - Esfera de energía que aniquila todo lo que toca",
+    anime: "Dragon Ball Super"
+  },
+  {
+    id: 404,
+    nombre: "Jiren",
+    imagen: "https://i.pinimg.com/736x/e4/e5/7f/e4e57f6c6fe16e81bca25e3be64cc2d7.jpg",
+    descripcion: "Miembro más fuerte del Pride Troopers del Universo 11. Su poder supera incluso al de algunos Dioses de la Destrucción.",
+    tipo: "Guerrero",
+    rareza: "S",
+    poder: 9600,
+    defensa: 9400,
+    habilidadPasiva: "Meditación del Poder - Aumenta estadísticas mientras no ataca",
+    habilidadUltimate: "Impacto del Poder Puro - Ataque físico que ignora defensas",
+    anime: "Dragon Ball Super"
+  }
+];
 
-export const cartasEjemplo: Carta[] = [...cartasGOH, ...cartasNaruto, ...cartasSoloLeveling];
+
+export const cartasEjemplo: Carta[] = [
+  ...cartasGOH,
+  ...cartasNaruto,
+  ...cartasSoloLeveling,
+  ...cartasJujutsuKaisen,
+  ...cartasDragonBallSuper,
+];
 export const gruposAnime: GrupoAnime[] = [
   {
     id: "GOH",
@@ -146,5 +300,18 @@ export const gruposAnime: GrupoAnime[] = [
     imagenPortada: "https://pendulo.com/imagenes_grandes/9798400/979840090193.GIF",
     descripcion: "Un mundo donde aparecen portales llenos de monstruos, obligando a humanos con poderes (cazadores) a luchar para proteger a la humanidad",
     cantidadCartas: cartasSoloLeveling.length
+  },
+  {
+    id: "Jujutsu Kaisen",
+    nombre: "Jujustu Kaisen",
+    imagenPortada: "https://m.media-amazon.com/images/I/81+PnqNaJxL._AC_UF894,1000_QL80_.jpg",
+    descripcion: "Yuji Itadori, un estudiante con fuerza sobrehumana que se une al mundo oculto de los hechiceros (Jujutsu Sorcerers) para luchar contra Maldiciones (espíritus malvados nacidos de emociones negativas) tras ingerir un dedo maldito y convertirse en recipiente del poderoso demonio Sukuna",
+    cantidadCartas: cartasJujutsuKaisen.length
+  },
+  {id: "Dragon Ball Super",
+    nombre: "Dragon Ball Super",
+    imagenPortada: "https://i.pinimg.com/564x/44/49/6c/44496c457c38022e2f1c578664ae037f.jpg",
+    descripcion: "Dragon Ball Super es la continuación oficial y canónica de Dragon Ball Z. La historia comienza unos meses después de la derrota de Majin Buu y expande el universo de la franquicia a una escala multiversal y divina.",
+    cantidadCartas: cartasDragonBallSuper.length
   }
 ];
