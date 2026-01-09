@@ -58,7 +58,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950">
+    <div className="min-h-screen bg-gradient-to-br from-gray-700 via-black to-gray-50">
       <Header busqueda={busqueda} setBusqueda={setBusqueda} />
       
       <main className="container mx-auto px-4 py-8">
