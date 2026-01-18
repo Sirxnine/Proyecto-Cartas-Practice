@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import type { Carta, NuevaCarta  } from './types/index';
+import type { Carta  } from './types/index';
 import { cartasEjemplo, gruposAnime } from './componentes/CartasIniciales';
 import Header from './componentes/Header';
 import ListaGrupos from './componentes/ListaGrupo';
@@ -7,7 +7,7 @@ import VistaGrupo from './componentes/VistaGrupo';
 import ModalCarta from './componentes/ModalCarta';
 
 function App() {
-  const [cartas, setCartas] = useState<Carta[]>(cartasEjemplo);
+  const [cartas] = useState<Carta[]>(cartasEjemplo);
   const [busqueda, setBusqueda] = useState('');
   const [mostrarModal, setMostrarModal] = useState(false);
   const [cartaSeleccionada, setCartaSeleccionada] = useState<Carta | null>(null);
