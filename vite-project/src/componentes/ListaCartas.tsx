@@ -7,12 +7,12 @@ function ListaCartas({ cartas, onCartaClick }: ListaCartasProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4">
       {cartas.map((carta) => (
         <Carta
           key={carta.id}
           carta={carta}
-          onClick={() => onCartaClick(carta)}
+          onClick={onCartaClick}
         />
       ))}
     </div>

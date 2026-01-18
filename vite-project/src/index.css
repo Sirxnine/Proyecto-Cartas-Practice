@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+/* Custom small animations and utilities */
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes popIn {
+	from { opacity: 0; transform: translateY(10px) scale(.96) rotateZ(-0.5deg); }
+	60% { transform: translateY(-6px) scale(1.02) rotateZ(0.5deg); }
+	to { opacity: 1; transform: translateY(0) scale(1) rotateZ(0); }
+}
+
+@layer utilities {
+	.fade-in { animation: fadeIn 220ms cubic-bezier(.2,.9,.2,1) forwards; }
+	.pop-in { animation: popIn 360ms cubic-bezier(.175,.885,.32,1.275) forwards; }
+	.backdrop-fade-in { animation: fadeIn 260ms ease-out forwards; }
+	.backdrop-fade-out { animation: fadeIn 220ms ease-in reverse forwards; }
+	.modal-pop-in { animation: popIn 360ms cubic-bezier(.175,.885,.32,1.275) forwards; }
+	.modal-pop-out { animation: popIn 260ms cubic-bezier(.4,.2,.5,1) reverse forwards; }
+}
+
+/* Global body smoothing */
+html, body, #root { height: 100%; }
+body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }

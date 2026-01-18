@@ -1,4 +1,4 @@
-import type { Carta, GrupoAnime } from "../types";
+import type { Carta } from "../types";
 
 export const cartasGOH: Carta[] = [
   {
@@ -443,61 +443,4 @@ export const cartasEjemplo: Carta[] = [
   ...cartasShumatsuValkyrie,
   ...cartasBokuNoHero,
   ...cartasOnePiece
-];
-export const gruposAnime: GrupoAnime[] = [
-  {
-    id: "GOH",
-    nombre: "The God of High School",
-    imagenPortada: "https://images.cdn2.buscalibre.com/fit-in/360x360/44/d2/44d295aba3b3cd9df349944d737eb28e.jpg",
-    descripcion: "Torneo de artes marciales donde luchadores con poderes sobrenaturales compiten por un deseo.",
-    cantidadCartas: cartasGOH.length
-  },
-  {
-    id: "Naruto Shippuden",
-    nombre: "Naruto",
-    imagenPortada: "https://i.pinimg.com/736x/b1/2b/97/b12b9782aa863b75cdbee3a35ab62bd2.jpg",
-    descripcion: "Historia de un ninja adolescente que busca ser reconocido como Hokage.",
-    cantidadCartas: cartasNaruto.length
-  },
-  {
-    id: "Solo Leveling",
-    nombre: "Solo Leveling",
-    imagenPortada: "https://pendulo.com/imagenes_grandes/9798400/979840090193.GIF",
-    descripcion: "Un mundo donde aparecen portales llenos de monstruos, obligando a humanos con poderes (cazadores) a luchar para proteger a la humanidad",
-    cantidadCartas: cartasSoloLeveling.length
-  },
-  {
-    id: "Jujutsu Kaisen",
-    nombre: "Jujustu Kaisen",
-    imagenPortada: "https://m.media-amazon.com/images/I/81+PnqNaJxL._AC_UF894,1000_QL80_.jpg",
-    descripcion: "Yuji Itadori, un estudiante con fuerza sobrehumana que se une al mundo oculto de los hechiceros (Jujutsu Sorcerers) para luchar contra Maldiciones (espíritus malvados nacidos de emociones negativas) tras ingerir un dedo maldito y convertirse en recipiente del poderoso demonio Sukuna",
-    cantidadCartas: cartasJujutsuKaisen.length
-  },
-  {id: "Dragon Ball Super",
-    nombre: "Dragon Ball Super",
-    imagenPortada: "https://i.pinimg.com/564x/44/49/6c/44496c457c38022e2f1c578664ae037f.jpg",
-    descripcion: "Dragon Ball Super es la continuación oficial y canónica de Dragon Ball Z. La historia comienza unos meses después de la derrota de Majin Buu y expande el universo de la franquicia a una escala multiversal y divina.",
-    cantidadCartas: cartasDragonBallSuper.length
-  },
-  {
-    id: "Shumatsu no Valkyrie",
-    nombre: "Shumatsu no Valkyrie",
-    imagenPortada: "https://i.pinimg.com/736x/f3/f4/1f/f3f41f72ff3034154a8d56c849931e58.jpg",
-    descripcion: "Humanos vs dioses en un torneo para decidir el destino de la humanidad.",
-    cantidadCartas: cartasShumatsuValkyrie.length
-  },
-  {
-    id: "One Piece",
-    nombre: "One Piece",
-    imagenPortada: "https://i.pinimg.com/736x/e9/9f/65/e99f65521c2675130ea54201f0376296.jpg",
-    descripcion: "Aventuras piratas en busca del tesoro definitivo, el One Piece.",
-    cantidadCartas: cartasOnePiece.length
-  },
-  {
-    id: "Boku no Hero",
-    nombre: "My Hero Academia",
-    imagenPortada: "https://i.pinimg.com/1200x/b6/0d/94/b60d94bb56b5dd13492e2a398827fc7e.jpg",
-    descripcion: "Estudiantes de una academia de héroes desarrollan sus poderes (quirks).",
-    cantidadCartas: cartasBokuNoHero.length
-  }
 ];

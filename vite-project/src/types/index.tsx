@@ -14,19 +14,6 @@ export interface Carta {
 
 export type NuevaCarta = Omit<Carta, 'id'>;
 
-export interface GrupoAnime {
-  id: string; 
-  nombre: string; 
-  imagenPortada: string; 
-  descripcion: string;  
-  cantidadCartas: number; 
-}
-
-export interface GrupoAnimeProps {
-  grupo: GrupoAnime;
-  cartas: Carta[]; 
-  onGrupoClick: (grupoId: string) => void;
-}
 
 export interface HeaderProps {
   busqueda: string;
@@ -49,9 +36,3 @@ export interface ModalCartaProps {
   onClose: () => void;
 }
 
-export interface VistaGrupoProps {
-  grupo: GrupoAnime | null;
-  cartas: Carta[];
-  onCartaClick: (carta: Carta) => void;
-  onVolver: () => void;
-}
