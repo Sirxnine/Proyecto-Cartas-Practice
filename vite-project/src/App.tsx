@@ -1,9 +1,10 @@
 import { useState, useMemo } from 'react';
-import type { Carta } from './types/index';
-import { cartasEjemplo } from './componentes/CartasIniciales';
 import Header from './componentes/Header';
 import ListaCartas from './componentes/ListaCartas';
 import ModalCarta from './componentes/ModalCarta';
+import { cartasEjemplo } from './componentes/CartasIniciales';
+import type { Carta } from './types/index';
+import { BsFeather } from "react-icons/bs";
 
 function App() {
   const [cartas] = useState<Carta[]>(cartasEjemplo);
@@ -13,7 +14,8 @@ function App() {
 
   const cartasFiltradas = useMemo(() => {
     return cartas.filter(carta =>
-      carta.nombre.toLowerCase().includes(busqueda.toLowerCase())
+      carta.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+      carta.tipo.toLowerCase().includes(busqueda.toLowerCase())
     );
   }, [cartas, busqueda]);
 
@@ -24,30 +26,59 @@ function App() {
 
   const cerrarModal = () => {
     setMostrarModal(false);
-    setCartaSeleccionada(null);
+    setTimeout(() => setCartaSeleccionada(null), 300); 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#020417] via-[#071226] to-[#040810] text-slate-100 transition-colors">
-      <Header busqueda={busqueda} setBusqueda={setBusqueda} />
-      <main className="container mx-auto px-4 py-8">
-        {busqueda.trim() !== "" && cartasFiltradas.length === 0 && (
-          <div className="text-center py-8">
-            <p className="text-red-400 text-lg">No se encontraron Cartas con "{busqueda}"</p>
+    <div className="min-h-screen bg-[#050505] text-slate-100 selection:bg-cyan-500/30">
+      {/* Fondo con textura sutil de escaneo */}
+      <div className="fixed inset-0 z-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+      
+      {/* Luces de ambiente en las esquinas */}
+      <div className="fixed -top-[10%] -left-[10%] w-[40%] h-[40%] bg-cyan-900/10 blur-[120px] rounded-full"></div>
+      <div className="fixed -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-purple-900/10 blur-[120px] rounded-full"></div>
+
+      <div className="relative z-10">
+        <Header busqueda={busqueda} setBusqueda={setBusqueda} />
+        
+        <main className="container mx-auto px-4 py-10">
+          
+          {/* Indicador de resultados */}
+          <div className="mb-8 flex items-center gap-4">
+            <div className="h-px grow bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
+            <span className="text-[10px] font-black tracking-[0.5em] text-white/30 uppercase italic">
+              {busqueda ? `Resultados: ${cartasFiltradas.length}` : 'Colección Completa'} <BsFeather className="inline text-xs not-italic ml-1 font-serif opacity-90" />
+            </span>
+            <div className="h-px grow bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
           </div>
-        )}
 
-        <ListaCartas cartas={cartasFiltradas} onCartaClick={abrirModalCarta} />
+          {/* Estado vacío con estilo Cyber */}
+          {busqueda.trim() !== "" && cartasFiltradas.length === 0 && (
+            <div className="text-center py-20 border-2 border-dashed border-white/5 rounded-[3rem] bg-white/2">
+              <p className="text-cyan-400 text-2xl font-black italic tracking-tighter uppercase mb-2">
+                No se encontraron cartas <BsFeather className="inline text-3xl not-italic ml-1 font-serif opacity-90" />
+              </p>
+              <p className="text-white/40 text-xs font-mono tracking-widest">
+                ERROR_CODE: UNIT_NOT_FOUND // Prueba con otro nombre o tipo
+              </p>
+            </div>
+          )}
 
-        <ModalCarta
-          carta={cartaSeleccionada}
-          isOpen={mostrarModal}
-          onClose={cerrarModal}
-        />
-      </main>
+          {/* Grilla de Cartas */}
+          <div className="animate-in fade-in duration-700">
+            <ListaCartas cartas={cartasFiltradas} onCartaClick={abrirModalCarta} />
+          </div>
+
+          {/* Modal Adaptado */}
+          <ModalCarta
+            carta={cartaSeleccionada}
+            isOpen={mostrarModal}
+            onClose={cerrarModal}
+          />
+        </main>
+      </div>
     </div>
   );
 }
 
 export default App;
-

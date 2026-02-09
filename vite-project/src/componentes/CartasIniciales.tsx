@@ -10,7 +10,6 @@ export const cartasGOH: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9800,
-    habilidadPasiva: "Renovación - Se cura automáticamente cuando su salud está baja",
     habilidadUltimate: "Jeabongchim x250.000 - Aumenta su poder 250,000 veces por 3 turnos",
     anime: "GOH"
   },
@@ -23,7 +22,6 @@ export const cartasGOH: Carta[] = [
     rareza: "S",
     poder: 9200,
     defensa: 8800,
-    habilidadPasiva: "Concentración Perfecta - No pierde la calma en combate",
     habilidadUltimate: "Puño del Dragón - Golpe que concentra toda su energía en un ataque devastador",
     anime: "GOH"
   },
@@ -36,7 +34,6 @@ export const cartasGOH: Carta[] = [
     rareza: "A",
     poder: 8200,
     defensa: 7800,
-    habilidadPasiva: "Transformación Zorro - Puede transformarse parcialmente",
     habilidadUltimate: "Ataque de Nueve Colas - Libera todo el poder del zorro",
     anime: "GOH"
   },
@@ -49,7 +46,6 @@ export const cartasGOH: Carta[] = [
     rareza: "SS",
     poder: 8500,
     defensa: 9500,
-    habilidadPasiva: "Maestro Táctico - Siempre tiene un plan de respaldo",
     habilidadUltimate: "Ejército de Androides - Invoca un ejército de robots para luchar",
     anime: "GOH"
   }
@@ -64,7 +60,6 @@ export const cartasNaruto: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9000,
-    habilidadPasiva: "Chakra del Kyuubi - Regeneración acelerada",
     habilidadUltimate: "Modo Sabio - Multiplica por 10 todos sus atributos",
     anime: "Naruto Shippuden"
   },
@@ -77,7 +72,6 @@ export const cartasNaruto: Carta[] = [
     rareza: "SS",
     poder: 9200,
     defensa: 8200,
-    habilidadPasiva: "Sharingan - Copia técnicas y predice movimientos",
     habilidadUltimate: "Susano'o Perfecto - Armadura de chakra invulnerable",
     anime: "Naruto Shippuden"
   },
@@ -90,7 +84,6 @@ export const cartasNaruto: Carta[] = [
     rareza: "S",
     poder: 8900,
     defensa: 8700,
-    habilidadPasiva: "Teleportación Instantánea - Se mueve a velocidad relámpago",
     habilidadUltimate: "Rasengan Volátil - Esfera de chakra de máxima potencia",
     anime: "Naruto Shippuden"
   },
@@ -103,7 +96,6 @@ export const cartasNaruto: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9200,
-    habilidadPasiva: "Rinnegan Eternal - Ve chakra y controla los seis caminos",
     habilidadUltimate: "Meteoritos del Cielo - Invoca meteoritos gigantes desde la atmósfera",
     anime: "Naruto Shippuden"
   }
@@ -118,7 +110,6 @@ export const cartasSoloLeveling:Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9800,
-    habilidadPasiva: "Sistema de Monarca - Puede aumentar de forma constante sus atributos",
     habilidadUltimate: "Sombras - Manifiesta un ejercito de mas de 1000 soldados sombra",
     anime: "Solo Leveling"
   },
@@ -131,7 +122,6 @@ export const cartasSoloLeveling:Carta[] = [
     rareza: "S",
     poder: 8700,
     defensa: 8200,
-    habilidadPasiva: "Percepción Sensorial Mejorada - Detecta presencias ocultas y debilidades enemigas",
     habilidadUltimate: "Corte Relámpago - Ataque de espada a velocidad supersónica",
     anime: "Solo Leveling"
   },
@@ -144,20 +134,18 @@ export const cartasSoloLeveling:Carta[] = [
     rareza: "S",
     poder: 8900,
     defensa: 9500,
-    habilidadPasiva: "Piel de Hierro - Reduce el daño recibido en un 40%",
     habilidadUltimate: "Transformación Berserker - Triplica su fuerza y defensa por 2 turnos",
     anime: "Solo Leveling"
   },
   {
     id: 204,
     nombre: "Igris",
-    imagen: "https://static.wikia.nocookie.net/solo-leveling/images/d/d7/Igris22.jpeg/",
+    imagen: "https://i.pinimg.com/originals/76/ee/6b/76ee6b503182a674e036c1edcc5d6a64.jpg",
     descripcion: "Caballero sombra de alto rango y primer soldado sombra reclutado por Jin-Woo. Sirve como su mano derecha y comandante del ejército sombra.",
     tipo: "Caballero",
     rareza: "A",
     poder: 8200,
     defensa: 8500,
-    habilidadPasiva: "Lealtad Inquebrantable - Protege automáticamente al aliado con menos HP",
     habilidadUltimate: "Asalto de la Guardia Real - Lidera a todos los soldados sombra en un ataque coordinado",
     anime: "Solo Leveling"
   }
@@ -172,7 +160,6 @@ export const cartasJujutsuKaisen: Carta[] = [
     rareza: "SS",
     poder: 9900,
     defensa: 8500,
-    habilidadPasiva: "Seis Ojos - Ve el flujo de energía maldita y le proporciona energia infinita",
     habilidadUltimate: "Vacío Infinito - Atrapa objetivos en un bucle infinito de información",
     anime: "Jujutsu Kaisen"
   },
@@ -185,7 +172,6 @@ export const cartasJujutsuKaisen: Carta[] = [
     rareza: "S",
     poder: 8800,
     defensa: 8600,
-    habilidadPasiva: "Recipiente Perfecto - Resiste la posesión de Sukuna",
     habilidadUltimate: "Impacto Divergente - Golpe concentrado que altera la realidad local",
     anime: "Jujutsu Kaisen"
   },
@@ -198,7 +184,6 @@ export const cartasJujutsuKaisen: Carta[] = [
     rareza: "A",
     poder: 8300,
     defensa: 8100,
-    habilidadPasiva: "Dominio de Sombras - Puede teletransportarse entre sombras",
     habilidadUltimate: "Mahoraga Incompleto - Invoca al shikigami más poderoso brevemente",
     anime: "Jujutsu Kaisen"
   },
@@ -211,7 +196,6 @@ export const cartasJujutsuKaisen: Carta[] = [
     rareza: "SS",
     poder: 10000,
     defensa: 9000,
-    habilidadPasiva: "Dominio Malevolente - Su presencia debilita a los enemigos",
     habilidadUltimate: "Doma - Corte espacial que divide cualquier cosa en su alcance",
     anime: "Jujutsu Kaisen"
   }
@@ -226,7 +210,6 @@ export const cartasDragonBallSuper: Carta[] = [
     rareza: "SS",
     poder: 9900,
     defensa: 9500,
-    habilidadPasiva: "Instinto Perfecto - Esquiva automáticamente ataques",
     habilidadUltimate: "Kamehameha de Instinto Ultra - Ataque de energía con precisión absoluta",
     anime: "Dragon Ball Super"
   },
@@ -239,7 +222,6 @@ export const cartasDragonBallSuper: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9200,
-    habilidadPasiva: "Ego Creciente - Aumenta poder un 10% por cada golpe recibido",
     habilidadUltimate: "Final Flash Galáctico - Concentración máxima de energía de destrucción",
     anime: "Dragon Ball Super"
   },
@@ -252,7 +234,6 @@ export const cartasDragonBallSuper: Carta[] = [
     rareza: "SS",
     poder: 9700,
     defensa: 9700,
-    habilidadPasiva: "Hakai - Puede borrar la existencia de cualquier cosa",
     habilidadUltimate: "Esfera de la Destrucción - Esfera de energía que aniquila todo lo que toca",
     anime: "Dragon Ball Super"
   },
@@ -265,7 +246,6 @@ export const cartasDragonBallSuper: Carta[] = [
     rareza: "S",
     poder: 9600,
     defensa: 9400,
-    habilidadPasiva: "Meditación del Poder - Aumenta estadísticas mientras no ataca",
     habilidadUltimate: "Impacto del Poder Puro - Ataque físico que ignora defensas",
     anime: "Dragon Ball Super"
   }
@@ -280,7 +260,6 @@ export const cartasShumatsuValkyrie: Carta[] = [
     rareza: "SS",
     poder: 9700,
     defensa: 9200,
-    habilidadPasiva: "Poder del Trueno - Ataques eléctricos adicionales",
     habilidadUltimate: "Mjölnir Desatado - Libera el verdadero poder del martillo divino",
     anime: "Shumatsu no Valkyrie"
   },
@@ -293,7 +272,6 @@ export const cartasShumatsuValkyrie: Carta[] = [
     rareza: "S",
     poder: 9500,
     defensa: 8800,
-    habilidadPasiva: "Fuerza Inhumana - Ignora 30% de la defensa enemiga",
     habilidadUltimate: "Golpe Celestial - Estocada que atraviesa cualquier defensa",
     anime: "Shumatsu no Valkyrie"
   },
@@ -306,7 +284,6 @@ export const cartasShumatsuValkyrie: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 8500,
-    habilidadPasiva: "Perfección Divina - No puede ser golpeado críticamente",
     habilidadUltimate: "40 Días de Inundación - Ataca 40 veces en un instante",
     anime: "Shumatsu no Valkyrie"
   },
@@ -319,7 +296,6 @@ export const cartasShumatsuValkyrie: Carta[] = [
     rareza: "S",
     poder: 8600,
     defensa: 8300,
-    habilidadPasiva: "Escaneo Divino - Predice todos los movimientos enemigos",
     habilidadUltimate: "Tsubame Gaeshi Perfecto - Golpea desde tres direcciones simultáneas",
     anime: "Shumatsu no Valkyrie"
   }
@@ -334,7 +310,6 @@ export const cartasOnePiece: Carta[] = [
     rareza: "SS",
     poder: 9700,
     defensa: 9300,
-    habilidadPasiva: "Cuerpo de Goma - Inmune a golpes contundentes",
     habilidadUltimate: "Bajrang Gun - Golpe gigante que combina Haki de Conquistador y Gear 5",
     anime: "One Piece"
   },
@@ -347,7 +322,6 @@ export const cartasOnePiece: Carta[] = [
     rareza: "S",
     poder: 9200,
     defensa: 8700,
-    habilidadPasiva: "Haki del Rey de Conquistadores - Intimida a enemigos débiles",
     habilidadUltimate: "Santoryu Ogi: Ichidai Sanzen Daisen Sekai - Corte que abre el infierno",
     anime: "One Piece"
   },
@@ -360,20 +334,18 @@ export const cartasOnePiece: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9600,
-    habilidadPasiva: "Piel de Dragón - Reduce 50% del daño recibido",
     habilidadUltimate: "Boro Breath - Aliento de dragón que incinera todo",
     anime: "One Piece"
   },
   {
     id: 604,
     nombre: "Shanks",
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU1wzlmBPCJMdPPMpMfW3Jql7BvdVJP8D-vw&s",
+    imagen: "https://i.pinimg.com/736x/17/0a/57/170a5707260f301383ad135bc9984f6f.jpg",
     descripcion: "Capitán de los Piratas de Pelirrojo y uno de los Cuatro Emperadores. Poseedor de un poderoso Haki de Conquistadores.",
     tipo: "Pirata",
     rareza: "S",
     poder: 9400,
     defensa: 8900,
-    habilidadPasiva: "Haki Supremo - Puede detener ataques a distancia",
     habilidadUltimate: "Divine Departure - Golpe que combina armamento y conquistador",
     anime: "One Piece"
   }
@@ -388,7 +360,6 @@ export const cartasBokuNoHero: Carta[] = [
     rareza: "SS",
     poder: 9500,
     defensa: 9000,
-    habilidadPasiva: "One For All - Acumula poder de portadores anteriores",
     habilidadUltimate: "Delaware Detroit Smash - Golpe aéreo de máxima potencia",
     anime: "Boku no Hero"
   },
@@ -401,7 +372,6 @@ export const cartasBokuNoHero: Carta[] = [
     rareza: "S",
     poder: 9200,
     defensa: 8500,
-    habilidadPasiva: "Reflejos Explosivos - Puede propulsarse en cualquier dirección",
     habilidadUltimate: "Howitzer Impact - Ataque explosivo giratorio de alta velocidad",
     anime: "Boku no Hero"
   },
@@ -414,7 +384,6 @@ export const cartasBokuNoHero: Carta[] = [
     rareza: "S",
     poder: 9100,
     defensa: 8800,
-    habilidadPasiva: "Termorregulación - Neutraliza efectos de calor/frío extremos",
     habilidadUltimate: "Gran Glaciación - Congela todo en un radio masivo",
     anime: "Boku no Hero"
   },
@@ -427,7 +396,6 @@ export const cartasBokuNoHero: Carta[] = [
     rareza: "SS",
     poder: 9800,
     defensa: 9600,
-    habilidadPasiva: "Símbolo de la Paz - Inspira a aliados, intimida a enemigos",
     habilidadUltimate: "United States of Smash - Golpe definitivo con todo su poder",
     anime: "Boku no Hero"
   }

@@ -7,7 +7,6 @@ export interface Carta {
   rareza: string;
   poder: number;
   defensa: number;
-  habilidadPasiva: string;
   habilidadUltimate: string;
   anime: string; 
 }

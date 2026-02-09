@@ -1,122 +1,102 @@
-import { useEffect, useState } from 'react';
 import type { ModalCartaProps } from '../types/index';
+import { BsFeather } from "react-icons/bs";
 
 function ModalCarta({ carta, isOpen, onClose }: ModalCartaProps) {
-  const [visible, setVisible] = useState<boolean>(isOpen);
-  const [closing, setClosing] = useState<boolean>(false);
+  if (!isOpen || !carta) return null;
 
-  useEffect(() => {
-    if (isOpen) {
-      setVisible(true);
-      setClosing(false);
-    } else if (visible) {
-      setClosing(true);
-      const t = setTimeout(() => setVisible(false), 360);
-      return () => clearTimeout(t);
-    }
-  }, [isOpen]);
-
-  const handleRequestClose = () => {
-    setClosing(true);
-    // wait for animation then call parent's onClose
-    setTimeout(() => {
-      setVisible(false);
-      onClose();
-    }, 320);
-  };
-
-  if (!visible || !carta) return null;
-
-  const backdropClass = closing ? 'backdrop-fade-out' : 'backdrop-fade-in';
-  const panelClass = closing ? 'modal-pop-out' : 'modal-pop-in';
+  // Lógica de escalado de datos
+  const psValue = Math.floor(carta.defensa / 10);
+  const damageValue = Math.floor(carta.poder / 50);
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity ${backdropClass}`}
-      onClick={handleRequestClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Detalle de ${carta.nombre}`}
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
+      onClick={onClose}
     >
-      <div
-        className={`w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-red-700
-          bg-gradient-to-br from-[#071226] to-[#020617] shadow-2xl ${panelClass}`}
+      {/* Contenedor Principal */}
+      <div 
+        className="relative bg-black w-full max-w-135 aspect-[1/1.4] rounded-[2.8rem] p-2 shadow-[0_0_80px_rgba(0,0,0,0.9)] border-2 border-white/10 overflow-hidden group"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center p-6 border-b border-red-500/20">
-          <h2 className="text-2xl font-bold text-white">{carta.nombre}</h2>
-          <button
-            onClick={handleRequestClose}
-            className="w-10 h-10 rounded-full bg-black/30 border border-red-700 flex items-center justify-center
-              text-white hover:bg-red-600 hover:text-white transition-colors shadow-sm"
-            aria-label="Cerrar"
-          >
-            ×
-          </button>
+        
+        {/* Ilustración de fondo */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={carta.imagen} 
+            alt={carta.nombre}
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent" />
         </div>
 
-        <div className="p-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Header */}
+        <div className="relative z-10 flex justify-between items-start p-6">
           <div className="flex flex-col">
-            <div className="flex-1">
-              <img
-                src={carta.imagen}
-                alt={carta.nombre}
-                className="w-full h-auto max-h-125 object-contain rounded-lg border-2 border-red-600/40 shadow-inner"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://preview.redd.it/characters-that-can-be-recognized-with-just-their-silhouette-v0-ytm08da795qc1.jpg?width=374&format=pjpg&auto=webp&s=854ae5998b018e53a292ef0adc1f5716d89777f8';
-                }}
-              />
+            <div className="bg-linear-to-r from-gray-200 to-white text-[10px] font-black px-4 py-1 rounded-br-xl rounded-tl-lg italic text-gray-900 shadow-md w-fit border-b-2 border-gray-400 uppercase tracking-widest">
+              {carta.tipo}
             </div>
-
-            <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="rounded-lg p-4 bg-gradient-to-br from-red-900/30 to-black/10 border border-red-800">
-                <p className="text-red-300 text-sm">💥 PODER</p>
-                <p className="text-white font-bold text-2xl">{carta.poder}</p>
-                <div className="h-2 bg-red-900 rounded-full mt-2">
-                  <div 
-                    className="h-full bg-red-500 rounded-full transition-all duration-700 ease-out"
-                    style={{ width: `${(carta.poder / 10000) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-              <div className="rounded-lg p-4 bg-gradient-to-br from-blue-900/30 to-black/10 border border-blue-800">
-                <p className="text-blue-300 text-sm">🛡️ DEFENSA</p>
-                <p className="text-white font-bold text-2xl">{carta.defensa}</p>
-                <div className="h-2 bg-blue-900 rounded-full mt-2">
-                  <div 
-                    className="h-full bg-blue-500 rounded-full transition-all duration-700 ease-out"
-                    style={{ width: `${(carta.defensa / 10000) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-4xl font-black text-white italic tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] uppercase mt-2">
+              {carta.nombre} <BsFeather className="text-5xl not-italic ml-1 font-serif opacity-90" />
+            </h2>
           </div>
 
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 gap-4">
-              <div className="bg-black/30 rounded-lg p-4 border border-white/5">
-                <p className="text-gray-400 text-sm">TIPO</p>
-                <p className="text-white font-bold text-lg">{carta.tipo}</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold text-white mb-2">📜 DESCRIPCIÓN</h3>
-              <p className="text-gray-300 leading-relaxed">{carta.descripcion}</p>
-            </div>
-
-            <div className="space-y-4">
-              <div className="rounded-lg p-4 border border-green-700/30 bg-green-900/10">
-                <h3 className="text-lg font-bold text-green-300 mb-2">⚙️ HABILIDAD PASIVA</h3>
-                <p className="text-gray-300">{carta.habilidadPasiva}</p>
-              </div>
-              
-              <div className="rounded-lg p-4 border border-yellow-700/30 bg-yellow-900/10">
-                <h3 className="text-lg font-bold text-yellow-300 mb-2">💫 HABILIDAD ULTIMATE</h3>
-                <p className="text-gray-300">{carta.habilidadUltimate}</p>
-              </div>
+          {/* Vida (Defensa / 10) */}
+          <div className="flex items-end gap-1 bg-black/60 backdrop-blur-lg pl-6 pr-4 py-2.5 rounded-l-full border-l border-y border-white/20 shadow-xl">
+            <span className="text-xs font-bold text-white/70 mb-1">PS</span>
+            <span className="text-5xl font-black text-white leading-none tracking-tighter">{psValue}</span>
+            <div className="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-black shadow-lg ml-3 text-xl">
+              👊
             </div>
           </div>
+        </div>
+
+        {/* Contenido */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 p-8 pt-12 flex flex-col gap-6">
+          
+          {/* Sección de la Ulti */}
+          <div className="border-t border-white/10 pt-6">
+            <div className="flex justify-between items-center mb-3">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-1">
+                  <div className="w-6 h-6 bg-orange-700 rounded-full border border-black shadow-sm" />
+                  <div className="w-6 h-6 bg-gray-400 rounded-full border border-black shadow-sm" />
+                </div>
+                <h3 className="text-2xl font-black text-yellow-400 italic tracking-tight drop-shadow-md leading-none uppercase">
+                  {carta.habilidadUltimate.split(' ')[0]} {carta.habilidadUltimate.split(' ')[1] || ''}
+                </h3>
+              </div>
+              <span className="text-5xl font-black text-white italic drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
+                {damageValue}
+              </span>
+            </div>
+            
+            {/* Descrpcion de la Ulti*/}
+            <p className="text-base md:text-lg text-gray-100 leading-snug font-medium drop-shadow-lg pr-4">
+              {carta.habilidadUltimate}
+            </p>
+          </div>
+
+          {/* Descripcion */}
+          <div className="bg-white/5 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
+            <p className="text-xs md:text-sm text-gray-300 italic font-light leading-relaxed">
+              {carta.descripcion}
+            </p>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-[8px] text-white/20 font-mono tracking-[0.4em] text-center mt-2 uppercase">
+            Proyecto // Leonardo_Monterola // 2026
+          </div>
+        </div>
+
+        {/* Botón de cierre */}
+        <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-linear-to-br from-white to-gray-400 rotate-45 z-30 shadow-2xl flex items-start justify-center pt-3">
+          <button 
+            onClick={onClose}
+            className="text-black font-black text-3xl -rotate-45 hover:text-red-600 transition-all transform hover:scale-110"
+          >
+            ✕
+          </button>
         </div>
       </div>
     </div>
