@@ -19,7 +19,7 @@ function Header({ busqueda, setBusqueda }: HeaderProps) {
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl font-black italic tracking-tighter text-white drop-shadow-lg">
-                 <span className="text-cyan-400">CARTAS <BsFeather className="text-3xl not-italic ml-1 font-serif opacity-90" /> </span>
+                <span className="text-cyan-400 flex ">CARTAS<BsFeather className="text-3xl not-italic ml-1 font-serif opacity-90" /> </span>
               </h1>
               <div className="h-1 w-full bg-linear-to-r from-cyan-500 to-transparent rounded-full opacity-50"></div>
             </div>
