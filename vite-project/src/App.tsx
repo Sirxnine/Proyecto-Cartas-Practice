@@ -5,12 +5,14 @@ import ModalCarta from './componentes/ModalCarta';
 import { cartasEjemplo } from './componentes/CartasIniciales';
 import type { Carta } from './types/index';
 import { BsFeather } from "react-icons/bs";
+import FormularioCarta from './componentes/Form';
 
 function App() {
-  const [cartas] = useState<Carta[]>(cartasEjemplo);
+  const [cartas, setCartas] = useState<Carta[]>(cartasEjemplo);
   const [busqueda, setBusqueda] = useState('');
   const [mostrarModal, setMostrarModal] = useState(false);
   const [cartaSeleccionada, setCartaSeleccionada] = useState<Carta | null>(null);
+  
 
   const cartasFiltradas = useMemo(() => {
     return cartas.filter(carta =>
@@ -29,6 +31,9 @@ function App() {
     setTimeout(() => setCartaSeleccionada(null), 300); 
   };
 
+  const añadirCarta = (nueva: Carta) => {
+    setCartas([nueva, ...cartas]);
+  };
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 selection:bg-cyan-500/30">
       {/* Fondo con textura sutil de escaneo */}
@@ -64,7 +69,10 @@ function App() {
             </div>
           )}
 
-          {/* Grilla de Cartas */}
+          {/* Formulario para añadir nuevas cartas */}
+            <FormularioCarta onCrear={añadirCarta} />
+
+          {/* Lista de Cartas */}
           <div className="animate-in fade-in duration-700">
             <ListaCartas cartas={cartasFiltradas} onCartaClick={abrirModalCarta} />
           </div>
