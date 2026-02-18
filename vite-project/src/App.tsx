@@ -17,7 +17,7 @@ function App() {
   const cartasFiltradas = useMemo(() => {
     return cartas.filter(carta =>
       carta.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-      carta.tipo.toLowerCase().includes(busqueda.toLowerCase())
+      carta.anime.toLowerCase().includes(busqueda.toLowerCase())
     );
   }, [cartas, busqueda]);
 
