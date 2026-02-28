@@ -27,7 +27,8 @@ export interface CartaProps {
 export interface ListaCartasProps {
   cartas: Carta[];
   onCartaClick: (carta: Carta) => void;
-  onEliminarCarta: (id: number) => void;
+  onEliminarCarta: (id: number) => void
+  onAñadirCarta: (carta: Carta) => void;
 }
 
 export interface ModalCartaProps {

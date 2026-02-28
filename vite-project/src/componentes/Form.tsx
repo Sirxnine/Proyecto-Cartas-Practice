@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RiAddLine, RiImageAddLine, RiTerminalLine, RiShieldLine, RiSwordLine, RiHistoryLine } from "react-icons/ri";
 import { BsFeather } from "react-icons/bs";
+import { useNavigate } from 'react-router';
 
 const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,10 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
     e.preventDefault();
     onCrear({ ...formData, id: Date.now() });
     setFormData({ nombre: '', tipo: 'Luchador', poder: 0, defensa: 0, habilidadUltimate: '', descripcion: '', imagen: '' });
+    navigate('/');
   };
+
+  const navigate = useNavigate();
 
   return (
     /* Fondo */
