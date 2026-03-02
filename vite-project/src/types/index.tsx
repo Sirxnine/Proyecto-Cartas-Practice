@@ -4,9 +4,9 @@ export interface Carta {
   imagen: string;
   descripcion: string;
   tipo: string;
-  rareza: string;
   poder: number;
   defensa: number;
+  hp: number;
   habilidadUltimate: string;
   anime: string; 
 }

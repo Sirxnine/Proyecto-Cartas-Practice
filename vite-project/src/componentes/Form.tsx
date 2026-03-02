@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RiAddLine, RiImageAddLine, RiTerminalLine, RiShieldLine, RiSwordLine, RiHistoryLine } from "react-icons/ri";
+import { RiAddLine, RiImageAddLine, RiShieldLine, RiSwordLine, RiHistoryLine } from "react-icons/ri";
 import { BsFeather } from "react-icons/bs";
 import { useNavigate } from 'react-router';
 
@@ -11,13 +11,14 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
     defensa: 0,
     habilidadUltimate: '',
     descripcion: '',
-    imagen: ''
+    imagen: '',
+    hp: 0
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onCrear({ ...formData, id: Date.now() });
-    setFormData({ nombre: '', tipo: 'Luchador', poder: 0, defensa: 0, habilidadUltimate: '', descripcion: '', imagen: '' });
+    setFormData({ nombre: '', tipo: 'Luchador', poder: 0, defensa: 0, habilidadUltimate: '', descripcion: '', imagen: '', hp: 0 });
     navigate('/');
   };
 
@@ -35,7 +36,7 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
 
       {/* Tarjeta del Form */}
       <div className="relative z-10 w-full max-w-4xl bg-white/3 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-14 shadow-[0_0_80px_rgba(0,0,0,0.8)]">
-        
+
         {/* Adorno de esquina */}
         <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-500/30 rounded-tl-[2.5rem] pointer-events-none" />
 
@@ -54,7 +55,7 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
         </header>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
-          
+
           {/* Nombre */}
           <div className="group space-y-2">
             <label className="text-[10px] font-black text-white/40 uppercase tracking-widest group-focus-within:text-cyan-400 transition-colors">Nombre de la Personaje</label>
@@ -87,32 +88,41 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
             </div>
           </div>
 
-          {/* Ataque */}
-          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-linear-to-br from-white/2 to-transparent p-8 rounded-4x1 border border-white/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-2 opacity-10">
-              <RiTerminalLine size={80} />
+          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6 bg-linear-to-br from-white/2 to-transparent p-8 rounded-4xl border border-white/5 relative overflow-hidden">
+
+            {/* Input HP */}
+            <div className="space-y-3 relative z-10">
+              <div className="flex items-center gap-2 text-green-500/80 font-black italic text-xs tracking-tighter uppercase">
+                <RiShieldLine /> Vitalidad (HP)
+              </div>
+              <input
+                type="number" required value={formData.hp}
+                onChange={(e) => setFormData({ ...formData, hp: Number(e.target.value) })}
+                className="w-full bg-black/60 border border-green-500/20 p-4 rounded-xl text-white text-2xl font-mono focus:border-green-500 transition-all outline-none"
+              />
             </div>
-            
+
+            {/* Input Ataque */}
             <div className="space-y-3 relative z-10">
               <div className="flex items-center gap-2 text-red-500/80 font-black italic text-xs tracking-tighter uppercase">
-                <RiSwordLine /> Poder de Ataque
+                <RiSwordLine /> Ataque
               </div>
               <input
                 type="number" required value={formData.poder}
                 onChange={(e) => setFormData({ ...formData, poder: Number(e.target.value) })}
-                className="w-full bg-black/60 border border-red-500/20 p-4 rounded-xl text-white text-2xl font-mono focus:border-red-500 transition-all"
+                className="w-full bg-black/60 border border-red-500/20 p-4 rounded-xl text-white text-2xl font-mono focus:border-red-500 transition-all outline-none"
               />
             </div>
 
-            {/* Defensa */}
+            {/* Input Defensa */}
             <div className="space-y-3 relative z-10">
               <div className="flex items-center gap-2 text-blue-500/80 font-black italic text-xs tracking-tighter uppercase">
-                <RiShieldLine /> Defensa 
+                <RiShieldLine /> Defensa
               </div>
               <input
                 type="number" required value={formData.defensa}
                 onChange={(e) => setFormData({ ...formData, defensa: Number(e.target.value) })}
-                className="w-full bg-black/60 border border-blue-500/20 p-4 rounded-xl text-white text-2xl font-mono focus:border-blue-500 transition-all"
+                className="w-full bg-black/60 border border-blue-500/20 p-4 rounded-xl text-white text-2xl font-mono focus:border-blue-500 transition-all outline-none"
               />
             </div>
           </div>
@@ -140,7 +150,7 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
             />
           </div>
 
-            {/* Descripción / Lore */}
+          {/* Descripción / Lore */}
           <div className="space-y-2">
             <label className="text-[10px] font-black text-white/40 uppercase tracking-widest flex items-center gap-2"> <RiHistoryLine /> Lore / Descripción</label>
             <textarea

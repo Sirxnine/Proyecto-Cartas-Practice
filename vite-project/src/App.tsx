@@ -17,7 +17,7 @@ function App() {
 };
 
   return (
-       <Routes>
+      <Routes>
       <Route path='/' element={<Home añadirCarta={añadirCarta} eliminarCarta={eliminarCarta} cartas={cartas} />} />
       <Route path='/Form' element={<FormularioCarta onCrear={añadirCarta} />} />
     </Routes>

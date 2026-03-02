@@ -1,106 +1,113 @@
-import type { ModalCartaProps } from '../types/index';
-import { BsFeather } from "react-icons/bs";
+import { RiCloseLine, RiSwordLine, RiShieldLine, RiFocus3Line, RiBookReadLine } from "react-icons/ri";
+import type { Carta } from '../types';
 
-function ModalCarta({ carta, isOpen, onClose }: ModalCartaProps) {
+interface ModalCartaProps {
+  carta: Carta | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ModalCarta = ({ carta, isOpen, onClose }: ModalCartaProps) => {
   if (!isOpen || !carta) return null;
 
-  // Lógica de escalado de datos
-  const psValue = Math.floor(carta.defensa / 10);
-  const damageValue = Math.floor(carta.poder / 50);
-
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
-      onClick={onClose}
-    >
-      {/* Contenedor Principal */}
-      <div 
-        className="relative bg-black w-full max-w-135 aspect-[1/1.4] rounded-[2.8rem] p-2 shadow-[0_0_80px_rgba(0,0,0,0.9)] border-2 border-white/10 overflow-hidden group"
-        onClick={(e) => e.stopPropagation()}
+    // Reducimos el blur del fondo del modal completo
+    <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-300">
+      
+      {/* --- CARTAS DE FONDO DECORATIVAS (EFECTO JOYA) --- */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30">
+        {/* Carta fantasma izquierda */}
+        <div className="absolute w-112.5 aspect-[1/1.4] bg-linear-to-br from-white/10 to-transparent border border-white/10 rounded-[2.5rem] -translate-x-32 rotate-[-15deg] blur-[2px]" />
+        {/* Carta fantasma derecha */}
+        <div className="absolute w-112-5 aspect-[1/1.4] bg-linear-to-br from-white/10 to-transparent border border-white/10 rounded-[2.5rem] translate-x-32 rotate-15 blur-[2px]" />
+      </div>
+
+      {/* BOTÓN CERRAR: Un poco más integrado y pequeño */}
+      <button 
+        onClick={onClose} 
+        className="absolute top-8 right-8 z-150 bg-red-600/80 hover:bg-red-600 text-white p-3.5 rounded-full shadow-[0_0_20px_rgba(220,38,38,0.4)] transition-all hover:scale-105 active:scale-95 border border-white/20"
       >
+        <RiCloseLine size={24} />
+      </button>
+
+      {/* CUERPO DE LA CARTA: Full Art Refinado */}
+      <div className="relative z-10 w-full max-w-120 aspect-[1/1.4] bg-black rounded-[2.5rem] overflow-hidden border-2 border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.8)] flex flex-col group animate-in zoom-in duration-300">
         
-        {/* Ilustración de fondo */}
+        {/* 1. LA IMAGEN: Protagonista absoluta */}
         <div className="absolute inset-0 z-0">
           <img 
             src={carta.imagen} 
-            alt={carta.nombre}
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" 
+            alt={carta.nombre} 
           />
-          <div className="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent" />
+          {/* Degradado reducido: Más sutil y solo en la base para lectura */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/10" />
         </div>
 
-        {/* Header */}
-        <div className="relative z-10 flex justify-between items-start p-6">
-          <div className="flex flex-col">
-            <div className="bg-linear-to-r from-gray-200 to-white text-[10px] font-black px-4 py-1 rounded-br-xl rounded-tl-lg italic text-gray-900 shadow-md w-fit border-b-2 border-gray-400 uppercase tracking-widest">
-              {carta.tipo}
-            </div>
-            <h2 className="text-4xl font-black text-white italic tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] uppercase mt-2">
-              {carta.nombre} <BsFeather className="text-5xl not-italic ml-1 font-serif opacity-90" />
+        {/* 2. CONTENIDO FLOTANTE (ARRIBA): Textos reducidos */}
+        <div className="relative z-10 p-7 flex justify-between items-start drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">
+          <div className="flex flex-col gap-1">
+            <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-[9px] font-black px-2.5 py-1 rounded italic uppercase w-fit tracking-wider">
+              {carta.anime} • {carta.tipo}
+            </span>
+            <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none mt-1">
+              {carta.nombre} <span className="text-2xl font-bold opacity-70"></span>
             </h2>
           </div>
-
-          {/* Vida (Defensa / 10) */}
-          <div className="flex items-end gap-1 bg-black/60 backdrop-blur-lg pl-6 pr-4 py-2.5 rounded-l-full border-l border-y border-white/20 shadow-xl">
-            <span className="text-xs font-bold text-white/70 mb-1">PS</span>
-            <span className="text-5xl font-black text-white leading-none tracking-tighter">{psValue}</span>
-            <div className="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-black shadow-lg ml-3 text-xl">
-              👊
-            </div>
+          
+          <div className="text-right">
+            <span className="text-white/60 text-[9px] font-black block tracking-widest">PUNTOS SALUD</span>
+            <span className="text-4xl font-black text-white italic tracking-tighter tabular-nums leading-none">{carta.hp}</span>
           </div>
         </div>
 
-        {/* Contenido */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 p-8 pt-12 flex flex-col gap-6">
+        {/* 3. CONTENIDO FLOTANTE (ABAJO) - Información de Combate */}
+        <div className="relative z-10 mt-auto p-7 space-y-5">
           
-          {/* Sección de la Ulti */}
-          <div className="border-t border-white/10 pt-6">
-            <div className="flex justify-between items-center mb-3">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-1">
-                  <div className="w-6 h-6 bg-orange-700 rounded-full border border-black shadow-sm" />
-                  <div className="w-6 h-6 bg-gray-400 rounded-full border border-black shadow-sm" />
-                </div>
-                <h3 className="text-2xl font-black text-yellow-400 italic tracking-tight drop-shadow-md leading-none uppercase">
-                  {carta.habilidadUltimate.split(' ')[0]} {carta.habilidadUltimate.split(' ')[1] || ''}
-                </h3>
+          {/* STATS: Claros y potentes, textos reducidos */}
+          <div className="flex gap-3">
+            <div className="flex-1 bg-red-600/10 backdrop-blur-md border border-red-500/30 p-3.5 rounded-xl flex items-center justify-between shadow-lg">
+              <div className="flex items-center gap-2.5">
+                <RiSwordLine className="text-red-500" size={20} />
+                <span className="text-white/90 font-black text-[11px] uppercase italic">Ataque</span>
               </div>
-              <span className="text-5xl font-black text-white italic drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
-                {damageValue}
-              </span>
+              <span className="text-xl font-black text-white italic leading-none">{carta.poder}</span>
             </div>
-            
-            {/* Descrpcion de la Ulti*/}
-            <p className="text-base md:text-lg text-gray-100 leading-snug font-medium drop-shadow-lg pr-4">
-              {carta.habilidadUltimate}
+
+            <div className="flex-1 bg-blue-600/10 backdrop-blur-md border border-blue-500/30 p-3.5 rounded-xl flex items-center justify-between shadow-lg">
+              <div className="flex items-center gap-2.5">
+                <RiShieldLine className="text-blue-500" size={20} />
+                <span className="text-white/90 font-black text-[11px] uppercase italic">Defensa</span>
+              </div>
+              <span className="text-xl font-black text-white italic leading-none">{carta.defensa}</span>
+            </div>
+          </div>
+
+          {/* HABILIDAD ULTIMATE: Desenfoque reducido para ver la imagen */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/15 p-4.5 rounded-2xl shadow-xl">
+            <div className="flex items-center gap-1.5 mb-1.5 text-yellow-400 font-black uppercase text-[9px] tracking-[0.2em]">
+              <RiFocus3Line size={16} /> Ultimate Move
+            </div>
+            <h3 className="text-xl font-black text-white italic uppercase mb-1.5 leading-none">
+              {carta.habilidadUltimate.split(' - ')[0]}
+            </h3>
+            <p className="text-white/80 text-[13px] leading-tight italic font-medium px-0.5">
+              {carta.habilidadUltimate.split(' - ')[1]}
             </p>
           </div>
 
-          {/* Descripcion */}
-          <div className="bg-white/5 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
-            <p className="text-xs md:text-sm text-gray-300 italic font-light leading-relaxed">
+          {/* LORE: Estilo "Flavor Text" más fino */}
+          <div className="flex gap-2.5 items-start px-1.5 py-1">
+            <RiBookReadLine className="text-white/20 shrink-0 mt-0.5" size={18} />
+            <p className="text-[12px] text-white/40 italic leading-relaxed font-serif line-clamp-2">
               {carta.descripcion}
             </p>
           </div>
 
-          {/* Copyright */}
-          <div className="text-[8px] text-white/20 font-mono tracking-[0.4em] text-center mt-2 uppercase">
-            Proyecto // Leonardo_Monterola // 2026
-          </div>
-        </div>
-
-        {/* Botón de cierre */}
-        <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-linear-to-br from-white to-gray-400 rotate-45 z-30 shadow-2xl flex items-start justify-center pt-3">
-          <button 
-            onClick={onClose}
-            className="text-black font-black text-3xl -rotate-45 hover:text-red-600 transition-all transform hover:scale-110"
-          >
-            ✕
-          </button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default ModalCarta;
