@@ -1,10 +1,10 @@
-import { useEffect, useState,  } from 'react';
+import { useEffect, useState, } from 'react';
 import { cartasEjemplo } from './componentes/CartasIniciales';
 import { toApiCardMapper, toCardApiMapper, type Carta, type IApiCard } from './types/index';
 import { Route, Routes } from 'react-router';
 import FormularioCarta from './pages/Form';
 import Home from './pages/Home';
-import { TiPen } from 'react-icons/ti';
+import EditarCarta from './pages/updateCard';
 
 const API_URL = import.meta.env.VITE_EDUCA_API_URL
 
@@ -14,7 +14,7 @@ function App() {
   // setCartas([nueva, ...cartas]);
   // };
 
- // const eliminarCarta = (id: number) => {
+  // const eliminarCarta = (id: number) => {
   //setCartas(cartas.filter(c => c.id !== id));
   //};
 
@@ -28,16 +28,16 @@ function App() {
       console.log('Fetching cartas from API...', API_URL);
       const response = await fetch(`${API_URL}/card`, {
         headers: {
-          usersecretpasskey:"Leon422088LA"
+          usersecretpasskey: "Leon422088LA"
         }
       })
-      
-      const data = await response.json() as {data: IApiCard[]};
+
+      const data = await response.json() as { data: IApiCard[] };
       console.log(data)
       const cartasFromApi: IApiCard[] = data.data
       const cartasMapped: Carta[] = cartasFromApi.map(toCardApiMapper)
       console.log(cartasMapped)
-        setCartas(cartasMapped);
+      setCartas(cartasMapped);
     } catch (e) {
       console.error('Error fetching cartas:', e);
     } finally {
@@ -46,41 +46,66 @@ function App() {
   };
 
   useEffect(() => {
-
+    fetchCartas();
   }, []);
 
   const addCarta = async (carta: Carta) => {
-        try {
-            await fetch(`${API_URL}/card`, {
-                method: "POST",
-                headers: {"Content-Type": "application/json", usersecretpasskey:"Leon422088LA"},
-                body: JSON.stringify(toApiCardMapper(carta))
-            });
-            fetchCartas();
-        } catch (e) {
-            console.error("Error adding task:", e);
-        }}
+    try {
+      await fetch(`${API_URL}/card`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", usersecretpasskey: "Leon422088LA" },
+        body: JSON.stringify(toApiCardMapper(carta))
+      });
+      fetchCartas();
+    } catch (e) {
+      console.error("Error adding task:", e);
+    }
+  }
+  
+  const updateCarta = async (carta: Carta) => {
+    try {
+      console.log('Enviando datos a la API:', toApiCardMapper(carta));
+      const response = await fetch(`${API_URL}/card/${carta.id}`, { // Agregado await
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "usersecretpasskey": "Leon422088LA"
+        },
+        body: JSON.stringify(toApiCardMapper(carta))
+      });
+
+      if (!response.ok) {
+        throw new Error("Error en la respuesta de la API");
+      }
+      console.log("Actualización exitosa");
+      await fetchCartas(); // Esperamos a que recargue los datos actualizados
+    } catch (e) {
+      console.error("Error al actualizar la carta:", e);
+    }
+  };
+
 
   const deleteCarta = async (id: number) => {
-        try {
-            const card = cartas.find((c) => c.id === id);
-            if (!card) return;  
-            await fetch(`${API_URL}/card/${id}`, {
-                method: "DELETE",
-                headers: { usersecretpasskey:"Leon422088LA"},
-            });
-            fetchCartas();
-        } catch (e) {
-            console.error("Error updating carta:", e);  
-        }
-    };
+    try {
+      const card = cartas.find((c) => c.id === id);
+      if (!card) return;
+      await fetch(`${API_URL}/card/${id}`, {
+        method: "DELETE",
+        headers: { usersecretpasskey: "Leon422088LA" },
+      });
+      fetchCartas();
+    } catch (e) {
+      console.error("Error updating carta:", e);
+    }
+  };
 
   return (
-      <Routes>
-      <Route path='/' element={<Home añadirCarta={addCarta} eliminarCarta={deleteCarta} cartas={cartas} />} />
+    <Routes>
+      <Route path='/' element={<Home añadirCarta={addCarta} eliminarCarta={deleteCarta} cartas={cartas} onGuardar={updateCarta} />} />
       <Route path='/Form' element={<FormularioCarta onCrear={addCarta} />} />
+      <Route path='/Edit/:id' element={<EditarCarta onGuardar={updateCarta} />} />
     </Routes>
-  
+
   );
 
 }

@@ -1,7 +1,7 @@
 import type { ListaCartasProps } from '../types/index';
 import Carta from './Carta';
 
-function ListaCartas({ cartas, onCartaClick, onEliminarCarta}: ListaCartasProps) {
+function ListaCartas({ cartas, onCartaClick, onEliminarCarta }: ListaCartasProps) {
   if (cartas.length === 0) {
     return null; 
   }

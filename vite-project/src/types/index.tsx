@@ -1,14 +1,15 @@
 export interface Carta {
   id: number;
+  defensa: number;
   nombre: string;
   imagen: string;
   descripcion: string;
-  tipo: string;
   poder: number;
-  defensa: number;
+  attributes: {
+  tipo: string;
+  habilidadUltimate: string; 
+  }
   hp: number;
-  habilidadUltimate: string;
-  anime: string; 
 }
 
 export type NuevaCarta = Omit<Carta, 'id'>;
@@ -29,6 +30,7 @@ export interface ListaCartasProps {
   onCartaClick: (carta: Carta) => void;
   onEliminarCarta: (id: number) => void
   onAñadirCarta: (carta: Carta) => void;
+  onGuardar: (carta: Carta) => Promise<void>;
 }
 
 export interface ModalCartaProps {
@@ -64,9 +66,8 @@ export const toApiCardMapper = (card:Carta): IApiCard =>({
   lifePoints:card.hp,
   pictureUrl:card.imagen,
   attributes: {
-    tipo: card.tipo,
-    habilidadUltimate: card.habilidadUltimate,
-    anime: card.anime
+    tipo: card.attributes.tipo,
+    habilidadUltimate: card.attributes.habilidadUltimate,
   },
   userSecret:"Leon422088LA", 
   createdAt: new Date().toISOString(),
@@ -81,7 +82,8 @@ export const toCardApiMapper = (apiCard:IApiCard): Carta => ({
   defensa: apiCard.defense,
   hp: apiCard.lifePoints,
   imagen: apiCard.pictureUrl,
-  tipo: apiCard.attributes.tipo || '',
-  habilidadUltimate: apiCard.attributes.habilidadUltimate || '',
-  anime: apiCard.attributes.anime || ''
+  attributes: {
+    tipo: apiCard.attributes.tipo || '',
+    habilidadUltimate: apiCard.attributes.habilidadUltimate || ''
+  }
 });
