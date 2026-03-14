@@ -5,12 +5,12 @@ import ModalCarta from "../componentes/ModalCarta"
 import { useMemo, useState } from "react"
 import type { Carta } from "../types"
 
-const Home = ({cartas, añadirCarta, eliminarCarta}:{cartas: Carta[],añadirCarta: (nueva: Carta) => void, eliminarCarta: (id: number) => void}) => {
+const Home = ({cartas, añadirCarta, eliminarCarta, onGuardar}:{cartas: Carta[],añadirCarta: (nueva: Carta) => void, eliminarCarta: (id: number) => void, onGuardar: (carta: Carta) => Promise<void>}) => {
       const [busqueda, setBusqueda] = useState('');
         const cartasFiltradas = useMemo(() => {
           return cartas.filter(carta =>
             carta.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-            carta.anime.toLowerCase().includes(busqueda.toLowerCase())
+            carta.attributes.tipo.toLowerCase().includes(busqueda.toLowerCase())
           );
         }, [cartas, busqueda]);
 
@@ -75,8 +75,9 @@ const Home = ({cartas, añadirCarta, eliminarCarta}:{cartas: Carta[],añadirCart
             cartas={cartasFiltradas} 
             onCartaClick={abrirModalCarta}  
             onEliminarCarta={eliminarCarta}
-            onAñadirCarta={añadirCarta} />
-            
+            onAñadirCarta={añadirCarta} 
+            onGuardar={onGuardar}
+            />
           </div> 
           
         </main>

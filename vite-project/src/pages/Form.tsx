@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
   const [formData, setFormData] = useState({
-    nombre: '',
+    nombre: '',   
     tipo: 'Luchador',
     poder: 0,
     defensa: 0,
@@ -16,11 +16,34 @@ const FormularioCarta = ({ onCrear }: { onCrear: (carta: any) => void }) => {
   });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onCrear({ ...formData, id: Date.now() });
-    setFormData({ nombre: '', tipo: 'Luchador', poder: 0, defensa: 0, habilidadUltimate: '', descripcion: '', imagen: '', hp: 0 });
-    navigate('/');
+  e.preventDefault();
+
+  // CREAMOS EL OBJETO CON LA ESTRUCTURA CORRECTA
+  const nuevaCarta = {
+    nombre: formData.nombre,
+    poder: formData.poder,
+    defensa: formData.defensa,
+    hp: formData.hp,
+    imagen: formData.imagen,
+    descripcion: formData.descripcion,
+    // Aquí está el cambio clave:
+    attributes: {
+      tipo: formData.tipo,
+      habilidadUltimate: formData.habilidadUltimate
+    },
+    id: Date.now() // ID temporal
   };
+
+  onCrear(nuevaCarta);
+  
+  // Limpiar form
+  setFormData({ 
+    nombre: '', tipo: 'Luchador', poder: 0, defensa: 0, 
+    habilidadUltimate: '', descripcion: '', imagen: '', hp: 0 
+  });
+  
+  navigate('/');
+};
 
   const navigate = useNavigate();
 
