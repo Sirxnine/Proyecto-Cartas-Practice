@@ -36,6 +36,19 @@ export interface ModalCartaProps {
   onClose: () => void;
 }
 
+export interface HomeProps {
+  cartas: Carta[];
+  loading: {
+    fetch: boolean;
+    create: boolean;
+    update: boolean;
+    delete: boolean;
+  };
+  añadirCarta: (nueva: Carta) => void;
+  eliminarCarta: (id: number) => void;
+  onGuardar: (carta: Carta) => Promise<{ success: boolean; error?: any }>
+}
+
 export interface IApiCard {
   idCard: string;
   name: string;

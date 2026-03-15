@@ -5,21 +5,10 @@ import ListaCartas from "../componentes/ListaCartas";
 import ModalCarta from "../componentes/ModalCarta";
 import { useMemo, useState } from "react";
 import type { Carta } from "../types";
+import type { HomeProps } from "../types/index";
 
-interface HomeProps {
-  cartas: Carta[];
-  loading: {
-    fetch: boolean;
-    create: boolean;
-    update: boolean;
-    delete: boolean;
-  };
-  añadirCarta: (nueva: Carta) => void;
-  eliminarCarta: (id: number) => void;
-  onGuardar: (carta: Carta) => Promise<{ success: boolean; error?: any }>;
-}
 
-const Home = ({ cartas, loading, añadirCarta, eliminarCarta, onGuardar }: HomeProps) => {
+const Home = ({ cartas, loading, añadirCarta, eliminarCarta }: HomeProps) => {
   const [busqueda, setBusqueda] = useState('');
   const [mostrarModal, setMostrarModal] = useState(false);
   const [cartaSeleccionada, setCartaSeleccionada] = useState<Carta | null>(null);

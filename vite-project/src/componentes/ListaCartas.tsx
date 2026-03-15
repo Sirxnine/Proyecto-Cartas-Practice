@@ -6,7 +6,7 @@ interface Props extends ListaCartasProps {
   loadingDelete?: boolean;
 }
 
-function ListaCartas({ cartas, onCartaClick, onEliminarCarta, loadingDelete }: Props) {
+function ListaCartas({ cartas, onCartaClick, onEliminarCarta }: Props) {
   if (cartas.length === 0) {
     return null; 
   }
@@ -19,7 +19,6 @@ function ListaCartas({ cartas, onCartaClick, onEliminarCarta, loadingDelete }: P
           carta={carta}
           onClick={onCartaClick}
           onEliminar={onEliminarCarta}
-          isDeleting={loadingDelete} // Indicamos si hay una eliminación en curso
         />
       ))}
     </div>

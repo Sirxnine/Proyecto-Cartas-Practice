@@ -19,8 +19,28 @@ const ModalCarta = ({ carta, isOpen, onClose }: Props) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-hidden">
       
+      {/* Fondo con cartas desplegadas - EFECTO ORIGINAL */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm">
+        <div className="absolute inset-0 opacity-30">
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-48 h-64 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl border border-white/10"
+              style={{
+                top: `${20 + i * 8}%`,
+                left: `${10 + i * 5}%`,
+                transform: `rotate(${i * 3}deg)`,
+                animation: `float ${8 + i * 2}s ease-in-out infinite`,
+                animationDelay: `${i * 0.5}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Botón de Cerrar - ESTILO ORIGINAL (rojo) */}
       <button 
         onClick={onClose} 
         className="absolute top-8 right-8 z-[150] bg-red-600 hover:bg-red-500 text-white p-3 rounded-full transition-all border border-white/20 shadow-lg"
@@ -28,6 +48,7 @@ const ModalCarta = ({ carta, isOpen, onClose }: Props) => {
         <RiCloseLine size={24} />
       </button>
 
+      {/* Botón de Editar - ESTILO ORIGINAL (ámbar con texto negro) */}
       <button 
         onClick={handleEditClick}
         className="absolute top-8 left-8 z-[150] bg-amber-500 hover:bg-amber-400 text-black px-6 py-3 rounded-full transition-all border border-black/20 shadow-lg flex items-center gap-2 font-black uppercase italic text-xs tracking-widest"
@@ -35,13 +56,20 @@ const ModalCarta = ({ carta, isOpen, onClose }: Props) => {
         <RiEditLine size={18} /> Editar Registro
       </button>
 
+      {/* Modal principal */}
       <div className="relative z-10 w-full max-w-[460px] aspect-[1/1.4] bg-black rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col">
         
+        {/* IMAGEN FULL ART - ESTILO ORIGINAL */}
         <div className="absolute inset-0 z-0">
-          <img src={carta.imagen} className="w-full h-full object-cover object-top" alt={carta.nombre} />
+          <img 
+            src={carta.imagen} 
+            className="w-full h-full object-cover object-top" 
+            alt={carta.nombre} 
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20" />
         </div>
 
+        {/* CONTENIDO - ESTILO ORIGINAL con tipografía gruesa y colores vibrantes */}
         <div className="relative z-10 p-8 flex justify-between items-start">
           <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">
             {carta.nombre} <span className="text-xl font-bold opacity-60">V</span>
@@ -52,6 +80,7 @@ const ModalCarta = ({ carta, isOpen, onClose }: Props) => {
           </div>
         </div>
 
+        {/* Footer - ESTILO ORIGINAL con colores vibrantes */}
         <div className="relative z-10 mt-auto p-8 space-y-5">
           <div className="flex gap-3">
             <div className="flex-1 bg-red-600/10 backdrop-blur-md border border-red-500/30 p-3 rounded-xl flex items-center justify-between text-white">
@@ -68,15 +97,23 @@ const ModalCarta = ({ carta, isOpen, onClose }: Props) => {
             <div className="flex items-center gap-1.5 mb-1 text-yellow-400 font-black uppercase text-[9px] tracking-widest">
               <RiFocus3Line size={16} /> {carta.tipo}
             </div>
-            <h3 className="text-lg font-black text-white italic uppercase leading-none mb-2">
+            <h3 className="text-lg font-black text-white italic leading-none mb-2">
               {carta.habilidadUltimate}
             </h3>
-            <p className="text-white/70 text-[12px] italic leading-tight line-clamp-2">
+            <p className="text-white/70 text-[13px] italic leading-tight line-clamp-3">
               {carta.descripcion}
             </p>
           </div>
         </div>
       </div>
+
+      {/* Animación flotante */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0) rotate(var(--rotation)); }
+          50% { transform: translateY(-20px) rotate(var(--rotation)); }
+        }
+      `}</style>
     </div>
   );
 };
