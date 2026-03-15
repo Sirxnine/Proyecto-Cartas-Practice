@@ -1,6 +1,5 @@
 import type { ListaCartasProps } from '../types/index';
 import Carta from './Carta';
-import { RiLoader4Line } from 'react-icons/ri';
 
 interface Props extends ListaCartasProps {
   loadingDelete?: boolean;
